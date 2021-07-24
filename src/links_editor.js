@@ -11,18 +11,17 @@
  import 'bootstrap/dist/css/bootstrap.min.css';
  import React, {useState} from 'react';
  import PropTypes from 'prop-types';
+import EditLinkModal from './edit_link_modal';
 
  function LinksEditor(props) {
   const [showNewLinkModal, setShowNewLinkModal] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
-  const [showEditPost, setShowEditPost] = useState(false);
+  const [showEditLinkModal, setShowEditLinkModal] = useState(false);
+  const [editLink, setEditLink] = useState(null);
 
 
   const handleCloseSettings = () => setShowSettings(false);
   const handleShowSettings= () => setShowSettings(true);
-
-  const handleCloseEditPost = () => setShowEditPost(false);
-  const handleShowEditPost= () => setShowEditPost(true);
 
   const handleDeleteLink = (linkId) => {
     props.setUserLinks((prevUserLinks) => {
@@ -39,8 +38,17 @@
       method: 'DELETE'
     };
     const url = `https://retoolapi.dev/lqtPSO/links/${linkId}`;
-    console.log(url);
     fetch(url, requestOptions);
+  };
+
+  const handleEditLink = (linkId) => {
+    const index = props.userLinks.findIndex(userLink => userLink.id === linkId);
+    if (index == -1) {
+      return;
+    }
+
+    setEditLink({...props.userLinks[index]});
+    setShowEditLinkModal(true);
   };
 
    return (
@@ -54,14 +62,13 @@
               <span className="editable-link-title">Link Title: {userLink.title}</span>
               <span className="editable-link-url">Link Url: {userLink.url}</span>
               <span className="editable-link-clicks">Clicks: {userLink.clicks}</span>
-              <span className="edit-link-btn" onClick={handleShowEditPost}>&#9998;</span>
+              <span className="edit-link-btn" onClick={() => {handleEditLink(userLink.id)}}>&#9998;</span>
               <span className="delete-link-btn" onClick={() => {handleDeleteLink(userLink.id)}}>&#x274C;</span>
             </li>
           ))}
         </ul>
       {showNewLinkModal &&
         <CreateLinkModal 
-          showNewLinkModal={showNewLinkModal}
           setShowNewLinkModal={setShowNewLinkModal}
           setUserLinks={props.setUserLinks}
         />
@@ -84,16 +91,13 @@
         </Modal.Body>
       </Modal>
 
-      <Modal show={showEditPost} onHide={handleCloseEditPost} animation={false}>
-        <Modal.Header closeButton>
-          <Modal.Title>Edit Post</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <input className="edit-link-title" type="text" value="Link Title" />
-         <input className="edit-link-url" type="text" value="http://example" />
-         <button className="edit-link-btn" onClick={() => {}}>Edit Link</button>
-        </Modal.Body>
-      </Modal>
+      {showEditLinkModal &&
+        <EditLinkModal
+          setShowEditLinkModal={setShowEditLinkModal}
+          editLink={editLink}
+          setUserLinks={props.setUserLinks}
+        />
+      }      
       
      </div>
    );
