@@ -74,10 +74,12 @@
         <Modal.Body>
         <input className="change-link-background" type="text" placeholder="Link Background Color" />
         <input className="change-link-color" type="text" placeholder="Link Text Color" />
-        <input type="radio" id="age1" name="age" value="30" />
-        <label for="age1">Rounded Corners</label>
-        <input type="radio" id="age2" name="age" value="60"/>
-        <label for="age2">Straight Corners</label> 
+        <div className="link-corner-styling-selection">
+        <input type="radio" id="rounded-option" name="rounded-option" value="round" />
+          <label for="rounded-option">Rounded Corners</label>
+          <input type="radio" id="straight-option" name="straight-option" value="straight"/>
+          <label for="straight-option">Straight Corners</label> 
+        </div>
          <button className="add-link-btn">Save</button>
         </Modal.Body>
       </Modal>
