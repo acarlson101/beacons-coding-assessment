@@ -50,10 +50,10 @@ const SettingsModal = (props) => {
     <span className="settings-form-label">Link Styling</span>
     <div className="link-corner-styling-selection">
       <input className="link-style-radio-btn" type="radio" id="rounded-option" name="rounded-option" value="round" defaultChecked={props.isLinkEdgeRounded} onChange={() => handleLinkEdgesChange(true)} />
-      <label className="link-style-radio-btn-label" for="rounded-option">Rounded Corners</label>
+      <label className="link-style-radio-btn-label" htmlFor="rounded-option">Rounded Corners</label>
       <br />
       <input className="link-style-radio-btn" type="radio" id="straight-option" name="rounded-option" value="straight" defaultChecked={!props.isLinkEdgeRounded} onChange={() => handleLinkEdgesChange(false)}/>
-      <label className="link-style-radio-btn-label" for="straight-option">Straight Corners</label> 
+      <label className="link-style-radio-btn-label" htmlFor="straight-option">Straight Corners</label> 
     </div>
      <button className="save-settings-btn" onClick={handleSubmit}>Save</button>
     </Modal.Body>

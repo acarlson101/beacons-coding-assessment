@@ -7,7 +7,7 @@
 
 import PropTypes from 'prop-types';
 import './styles/preview_link.scss';
-import React, {useState} from 'react';
+import React from 'react';
 import { BEACONS_BACKEND_API_BASE_URL } from './core/api_constants';
 
 const PreviewLink = (props) => {
@@ -31,7 +31,7 @@ const PreviewLink = (props) => {
     props.setUserLinks(prevUserLinks => {
       let updatedUserLinks = [...prevUserLinks]
       const updatedLinkIndex = updatedUserLinks.findIndex(userLink => userLink.id === props.linkId);
-      if (updatedLinkIndex == INVALID_LINK_INDEX) {
+      if (updatedLinkIndex === INVALID_LINK_INDEX) {
         return updatedUserLinks;
       }
   
@@ -51,7 +51,7 @@ const PreviewLink = (props) => {
 
   return (
     <li className={`live-link-item ${isLinkRoundedEdgeCSSClass}`} style={linkBackgroundStyle} onClick={trackLinkClick}>
-      <a className="live-link-anchor" href={props.linkUrl} style={linkColorStyle} target="_blank">{props.linkTitle}</a>
+      <a rel="noreferrer" className="live-link-anchor" href={props.linkUrl} style={linkColorStyle} target="_blank">{props.linkTitle}</a>
     </li>
   );
  }

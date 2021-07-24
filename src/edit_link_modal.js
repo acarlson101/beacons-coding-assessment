@@ -29,7 +29,7 @@ const EditLinkModal = (props) => {
   };
 
   const handleSubmit = (linkId) => {
-    if (linkTitle == '') {
+    if (linkTitle === '') {
       setFormErrorMsg('Please provide a valid title.');
       return;
     }
@@ -41,7 +41,7 @@ const EditLinkModal = (props) => {
     props.setUserLinks(prevUserLinks => {
       let updatedUserLinks = [...prevUserLinks]
       const updatedLinkIndex = updatedUserLinks.findIndex(userLink => userLink.id === linkId);
-      if (updatedLinkIndex == INVALID_LINK_INDEX) {
+      if (updatedLinkIndex === INVALID_LINK_INDEX) {
         return updatedUserLinks;
       }
 

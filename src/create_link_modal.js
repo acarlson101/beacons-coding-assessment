@@ -28,7 +28,7 @@ const CreateLinkModal = (props) => {
   };
 
   const handleSubmit = () => {
-    if (linkTitle == '') {
+    if (linkTitle === '') {
       setFormErrorMsg('Please provide a valid title.');
       return;
     }

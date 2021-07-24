@@ -35,7 +35,7 @@ const LinksEditor = (props) => {
     props.setUserLinks((prevUserLinks) => {
       let updatedUserLinks = [...prevUserLinks];
       const deleteLinkIndex = updatedUserLinks.findIndex(userLink => userLink.id === deleteLinkId);
-      if (deleteLink == INVALID_LINK_INDEX) {
+      if (deleteLink === INVALID_LINK_INDEX) {
         return updatedUserLinks;
       }
       updatedUserLinks.splice(deleteLinkIndex, 1);
@@ -52,7 +52,7 @@ const LinksEditor = (props) => {
 
   const handleEditLink = useCallback((linkId) => {
     const editLinkIndex = props.userLinks.findIndex(userLink => userLink.id === linkId);
-    if (editLinkIndex == INVALID_LINK_INDEX) {
+    if (editLinkIndex === INVALID_LINK_INDEX) {
       return;
     }
 
