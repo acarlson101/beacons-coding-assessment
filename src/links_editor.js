@@ -18,15 +18,30 @@
   const [showEditPost, setShowEditPost] = useState(false);
 
 
-
-
   const handleCloseSettings = () => setShowSettings(false);
   const handleShowSettings= () => setShowSettings(true);
 
   const handleCloseEditPost = () => setShowEditPost(false);
   const handleShowEditPost= () => setShowEditPost(true);
 
-  const createLink = () => {};
+  const handleDeleteLink = (linkId) => {
+    props.setUserLinks((prevUserLinks) => {
+      let updatedUserLinks = [...prevUserLinks];
+      const index = updatedUserLinks.findIndex(userLink => userLink.id === linkId);
+      if (index == -1) {
+        return updatedUserLinks;
+      }
+      updatedUserLinks.splice(index, 1);
+      return updatedUserLinks;
+    }); 
+
+    const requestOptions = {
+      method: 'DELETE'
+    };
+    const url = `https://retoolapi.dev/lqtPSO/links/${linkId}`;
+    console.log(url);
+    fetch(url, requestOptions);
+  };
 
    return (
      <div className="links-editor-container">
@@ -40,7 +55,7 @@
               <span className="editable-link-url">Link Url: {userLink.url}</span>
               <span className="editable-link-clicks">Clicks: {userLink.clicks}</span>
               <span className="edit-link-btn" onClick={handleShowEditPost}>&#9998;</span>
-              <span className="delete-link-btn">&#x274C;</span>
+              <span className="delete-link-btn" onClick={() => {handleDeleteLink(userLink.id)}}>&#x274C;</span>
             </li>
           ))}
         </ul>
@@ -76,7 +91,7 @@
         <Modal.Body>
         <input className="edit-link-title" type="text" value="Link Title" />
          <input className="edit-link-url" type="text" value="http://example" />
-         <button className="edit-link-btn" onClick={createLink}>Edit Link</button>
+         <button className="edit-link-btn" onClick={() => {}}>Edit Link</button>
         </Modal.Body>
       </Modal>
       
