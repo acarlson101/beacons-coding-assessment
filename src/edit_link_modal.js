@@ -8,10 +8,12 @@
  import React, {useState, useEffect} from 'react';
  import {Modal, Button} from 'react-bootstrap';
  import PropTypes from 'prop-types';
+ import validator from 'validator'
 
 function EditLinkModal(props) {
   const [linkTitle, setLinkTitle] = useState(props.editLink.title);
   const [linkUrl, setLinkUrl] = useState(props.editLink.url);
+  const [formErrorMsg, setFormErrorMsg] = useState('');
 
 const handleLinkTitleChange = (event) => {
   const intputTitle = event.target.value;
@@ -24,6 +26,15 @@ const handleLinkUrlChange = (event) => {
 };
 
 const handleSubmit = (linkId) => {
+  if (linkTitle == '') {
+    setFormErrorMsg('Please provide a valid title.');
+    return;
+  }
+  if (!validator.isURL(linkUrl)) {
+    setFormErrorMsg('Please provide a valid url.');
+    return;
+  }
+
   props.setUserLinks(prevUserLinks => {
     let updatedUserLinks = [...prevUserLinks]
     const index = updatedUserLinks.findIndex(userLink => userLink.id === linkId);
@@ -64,6 +75,7 @@ const saveNewLink = (updatedLinkData, linkId) => {
     <input className="edit-link-title" type="text" placeholder={props.editLink.title} onChange={handleLinkTitleChange} />
      <input className="edit-link-url" type="text" placeholder={props.editLink.url} onChange={handleLinkUrlChange} />
      <button className="edit-link-btn" onClick={() => handleSubmit(props.editLink.id)}>Edit Link</button>
+     <span>{formErrorMsg}</span>
     </Modal.Body>
   </Modal>
   );

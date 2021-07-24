@@ -49,8 +49,8 @@ import SettingsModal from './settings_modal';
       return;
     }
 
-    props.setEditLink({...props.userLinks[index]});
-    props.setShowEditLinkModal(true);
+    setEditLink({...props.userLinks[index]});
+    setShowEditLinkModal(true);
   }, []);
 
    return (
