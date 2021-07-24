@@ -1,0 +1,30 @@
+////
+/// Styling for create link modal
+///
+/// @copyright 2021 Adam Carlson - All rights reserved
+////
+
+@use "./core/colors";
+@use "./core/spacing";
+@use "./core/buttons";
+
+.create-link-modal-input {
+  margin-bottom: spacing.$form-section-spacing;
+  display: block;
+}
+
+.create-link-submit-btn {
+  background: colors.$default-theme-color;
+  color: colors.$white;
+  border: 0;
+  padding: buttons.$button-padding;
+  border-radius: buttons.$button-border-radius;
+  margin-top: spacing.$form-section-spacing;
+  display: block;
+}
+
+.create-link-error-msg {
+  color: colors.$warning-red;
+  display: inline-block;
+  margin-top: spacing.$form-section-spacing;
+}

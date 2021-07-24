@@ -5,14 +5,16 @@
  * @copyright 2021 Adam Carlson - All rights reserved
  */
 
- import './styles/beacons_app.scss';
- import LinksEditor from './links_editor';
- import LinksPreview from './links_preview';
- import React, {useState, useEffect} from 'react';
+import './styles/beacons_app.scss';
+import LinksEditor from './links_editor';
+import LinksPreview from './links_preview';
+import React, {useState, useEffect} from 'react';
+import { BEACONS_BACKEND_API_BASE_URL } from './core/api_constants';
+import PropTypes from 'prop-types';
 
- function BeaconsApp() {
+const BeaconsApp = () => {
   const getUserLinks = () => {
-    fetch("https://retoolapi.dev/lqtPSO/links")
+    fetch(BEACONS_BACKEND_API_BASE_URL)
     .then(result => result.json())
     .then(
       (result) => {
@@ -20,7 +22,7 @@
         setIsInitialLoadComplete(true);
       },
       (error) => {
-       // Handle error here
+       // In a production system, we would log here
       }
     )
   };
@@ -31,35 +33,38 @@
   const [linkColor, setLinkColor] = useState('#ffffff');
   const [isLinkEdgeRounded, setIsLinkEdgeRounded] = useState(false);
 
+  // Gather links data from backend api once
   useEffect(() => {
     setUserLinks(getUserLinks());
   }, []);
 
-   return (
-     <div className="beacons-app-container">
-       {isInitialLoadComplete &&
-        <div className="links-container">
-          <LinksEditor
-            userLinks={userLinks}
-            setUserLinks={setUserLinks}
-            linkBackgroundColor={linkBackgroundColor}
-            linkColor={linkColor}
-            isLinkEdgeRounded={isLinkEdgeRounded}
-            setLinkBackgroundColor={setLinkBackgroundColor}
-            setLinkColor={setLinkColor}
-            setIsLinkEdgeRounded={setIsLinkEdgeRounded}
-          />
-          <LinksPreview 
-            userLinks={userLinks}
-            setUserLinks={setUserLinks}
-            linkBackgroundColor={linkBackgroundColor}
-            linkColor={linkColor}
-            isLinkEdgeRounded={isLinkEdgeRounded}
-          />
-        </div>
-      }
-     </div>
-   );
- }
+  return (
+    <div className="beacons-app-container">
+      {isInitialLoadComplete &&
+      <div className="links-container">
+        <LinksEditor
+          userLinks={userLinks}
+          setUserLinks={setUserLinks}
+          linkBackgroundColor={linkBackgroundColor}
+          linkColor={linkColor}
+          isLinkEdgeRounded={isLinkEdgeRounded}
+          setLinkBackgroundColor={setLinkBackgroundColor}
+          setLinkColor={setLinkColor}
+          setIsLinkEdgeRounded={setIsLinkEdgeRounded}
+        />
+        <LinksPreview 
+          userLinks={userLinks}
+          setUserLinks={setUserLinks}
+          linkBackgroundColor={linkBackgroundColor}
+          linkColor={linkColor}
+          isLinkEdgeRounded={isLinkEdgeRounded}
+        />
+      </div>
+    }
+    </div>
+  );
+}
+
+BeaconsApp.propTypes = {};
  
- export default BeaconsApp;
+export default BeaconsApp;

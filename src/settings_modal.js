@@ -2,39 +2,39 @@
 /**
  * Modal to update settings
  *
- * @copyright 2021 Beacons - All rights reserved
+ * @copyright 2021 Adam Carlson - All rights reserved
  */
 
- import './styles/settings_modal.scss';
- import React, {useState, useEffect} from 'react';
- import {Modal, Button} from 'react-bootstrap';
- import PropTypes from 'prop-types';
+import './styles/settings_modal.scss';
+import React, {useState} from 'react';
+import {Modal} from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
-function SettingsModal(props) {
+const SettingsModal = (props) => {
   const [inputLinkBackgroundColor, setInputLinkBackgroundColor] = useState(props.linkBackgroundColor);
   const [inputLinkColor, setInputLinkColor] = useState(props.linkColor);
   const [inputIsLinkEdgeRounded, setInputIsLinkEdgeRounded] = useState(props.isLinkEdgeRounded);
 
-const handleLinkBackgroundColor = (event) => {
-  const inputLinkBackgroundColor = event.target.value;
-  setInputLinkBackgroundColor(inputLinkBackgroundColor);
-};
+  const handleLinkBackgroundColor = (event) => {
+    const inputLinkBackgroundColor = event.target.value;
+    setInputLinkBackgroundColor(inputLinkBackgroundColor);
+  };
 
-const handleLinkColor = (event) => {
-  const inputLinkColor = event.target.value;
-  setInputLinkColor(inputLinkColor);
-};
+  const handleLinkColor = (event) => {
+    const inputLinkColor = event.target.value;
+    setInputLinkColor(inputLinkColor);
+  };
 
-const handleLinkEdgesChange = (inputIsLinkEdgeRounded) => {
-  setInputIsLinkEdgeRounded(inputIsLinkEdgeRounded);
-};
+  const handleLinkEdgesChange = (inputIsLinkEdgeRounded) => {
+    setInputIsLinkEdgeRounded(inputIsLinkEdgeRounded);
+  };
 
-const handleSubmit = () => {
-  props.setLinkBackgroundColor(inputLinkBackgroundColor);
-  props.setLinkColor(inputLinkColor);
-  props.setIsLinkEdgeRounded(inputIsLinkEdgeRounded);
-  props.setShowSettings(false);
-};
+  const handleSubmit = () => {
+    props.setLinkBackgroundColor(inputLinkBackgroundColor);
+    props.setLinkColor(inputLinkColor);
+    props.setIsLinkEdgeRounded(inputIsLinkEdgeRounded);
+    props.setShowSettings(false);
+  };
 
 
   return (
