@@ -1,6 +1,6 @@
 # Beacons Take-Home Assessment
 ## Running the Application
-To view the React app, please run:
+To view the React app, please:
 1) cd into the git repository
 2) Run: `npm install`
 3) Run: `npm start` 
