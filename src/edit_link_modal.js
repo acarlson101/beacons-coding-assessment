@@ -4,7 +4,7 @@
  * @copyright 2021 Adam Carlson - All rights reserved
  */
 
- import './styles/beacons_app.scss';
+ import './styles/edit_link_modal.scss';
  import React, {useState, useEffect} from 'react';
  import {Modal, Button} from 'react-bootstrap';
  import PropTypes from 'prop-types';
@@ -72,9 +72,11 @@ const saveNewLink = (updatedLinkData, linkId) => {
       <Modal.Title>Edit Post</Modal.Title>
     </Modal.Header>
     <Modal.Body>
-    <input className="edit-link-title" type="text" placeholder={props.editLink.title} onChange={handleLinkTitleChange} />
-     <input className="edit-link-url" type="text" placeholder={props.editLink.url} onChange={handleLinkUrlChange} />
-     <button className="edit-link-btn" onClick={() => handleSubmit(props.editLink.id)}>Edit Link</button>
+      <span className="edit-link-modal-label">Update Title</span>
+    <input className="edit-link-modal-input" type="text" placeholder={props.editLink.title} onChange={handleLinkTitleChange} />
+    <span className="edit-link-modal-label">Update Url</span>
+     <input className="edit-link-modal-input" type="text" placeholder={props.editLink.url} onChange={handleLinkUrlChange} />
+     <button className="edit-link-submit-btn" onClick={() => handleSubmit(props.editLink.id)}>Edit Link</button>
      <span>{formErrorMsg}</span>
     </Modal.Body>
   </Modal>

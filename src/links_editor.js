@@ -14,6 +14,7 @@
 import EditLinkModal from './edit_link_modal';
 import EditableLink from './editable_link';
 import SettingsModal from './settings_modal';
+import ConfirmLinkDeletionModal from './confirm_link_deletion_modal';
 
  function LinksEditor(props) {
   const [showNewLinkModal, setShowNewLinkModal] = useState(false);
@@ -63,8 +64,7 @@ import SettingsModal from './settings_modal';
 
    return (
      <div className="links-editor-container">
-       <h2 className="links-editor-header">Edit Links</h2>
-       <span className="create-link-btn" onClick={() => setShowNewLinkModal(true)}>+</span>
+       <h2 className="links-editor-header">Links Editor</h2>
        <span className="settings-btn" onClick={handleShowSettings}>&#9881;</span>
         <ul className="editable-links">
           {props.userLinks.map((userLink, index) => (
@@ -79,6 +79,9 @@ import SettingsModal from './settings_modal';
             />
           ))}
         </ul>
+        <div className="create-link-btn-container">
+          <span className="create-link-btn" onClick={() => setShowNewLinkModal(true)}>Add Link</span>
+        </div>
       {showNewLinkModal &&
         <CreateLinkModal 
           setShowNewLinkModal={setShowNewLinkModal}
@@ -107,15 +110,11 @@ import SettingsModal from './settings_modal';
       }
 
       {showConfirmDeleteModal &&
-        <Modal show={showConfirmDeleteModal} onHide={() => setShowConfirmDeleteModal(false)} animation={false}>
-        <Modal.Header closeButton>
-          <Modal.Title>Are you sure you want to delete this link?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <button onClick={() => setShowConfirmDeleteModal(false)}>Cancel</button>
-          <button onClick={() => deleteLink()}>Delete</button>
-        </Modal.Body>
-        </Modal>
+        <ConfirmLinkDeletionModal
+        showConfirmDeleteModal={showConfirmDeleteModal} 
+          setShowConfirmDeleteModal={setShowConfirmDeleteModal}
+          deleteLink={deleteLink}
+        />
       }      
       
      </div>
