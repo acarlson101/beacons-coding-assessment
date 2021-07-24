@@ -11,21 +11,5 @@
 
   .live-links {
     list-style-type: none;
-
-    .live-link-item {
-      margin: 10px 0;
-      display: block;
-      width: 80%;
-      position: relative;
-      left: 10%;
-      background: grey;
-      text-align: center;
-      height: 100px;
-
-      .live-link-anchor {
-        display: block;
-        line-height: 100px;
-      }
-    }
   }
 }

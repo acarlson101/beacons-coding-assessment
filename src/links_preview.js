@@ -5,7 +5,8 @@
  * @copyright 2021 Beacons - All rights reserved
  */
 
- import './styles/links_preview.scss';
+ import PreviewLink from './preview_link';
+import './styles/links_preview.scss';
 
  function LinksPreview(props) {
 
@@ -14,9 +15,10 @@
        <h2 className="links-preview-header">Preview Links</h2>
        <ul className="live-links">
           {props.userLinks.map((userLink, index) => (
-            <li className="live-link-item">
-              <a className="live-link-anchor" href={userLink.url}>{userLink.title}</a>
-            </li>
+            <PreviewLink
+              linkTitle={userLink.title}
+              linkUrl={userLink.url}
+            />
           ))}
         </ul>
      </div>

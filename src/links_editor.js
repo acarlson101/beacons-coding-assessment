@@ -2,7 +2,7 @@
 /**
  * Area where users can edit their links
  *
- * @copyright 2021 Beacons - All rights reserved
+ * @copyright 2021 Adam Carlson - All rights reserved
  */
 
  import './styles/links_editor.scss';
@@ -12,6 +12,7 @@
  import React, {useState} from 'react';
  import PropTypes from 'prop-types';
 import EditLinkModal from './edit_link_modal';
+import EditableLink from './editable_link';
 
  function LinksEditor(props) {
   const [showNewLinkModal, setShowNewLinkModal] = useState(false);
@@ -23,34 +24,6 @@ import EditLinkModal from './edit_link_modal';
   const handleCloseSettings = () => setShowSettings(false);
   const handleShowSettings= () => setShowSettings(true);
 
-  const handleDeleteLink = (linkId) => {
-    props.setUserLinks((prevUserLinks) => {
-      let updatedUserLinks = [...prevUserLinks];
-      const index = updatedUserLinks.findIndex(userLink => userLink.id === linkId);
-      if (index == -1) {
-        return updatedUserLinks;
-      }
-      updatedUserLinks.splice(index, 1);
-      return updatedUserLinks;
-    }); 
-
-    const requestOptions = {
-      method: 'DELETE'
-    };
-    const url = `https://retoolapi.dev/lqtPSO/links/${linkId}`;
-    fetch(url, requestOptions);
-  };
-
-  const handleEditLink = (linkId) => {
-    const index = props.userLinks.findIndex(userLink => userLink.id === linkId);
-    if (index == -1) {
-      return;
-    }
-
-    setEditLink({...props.userLinks[index]});
-    setShowEditLinkModal(true);
-  };
-
    return (
      <div className="links-editor-container">
        <h2 className="links-editor-header">Edit Links</h2>
@@ -58,13 +31,16 @@ import EditLinkModal from './edit_link_modal';
        <span className="settings-btn" onClick={handleShowSettings}>&#9881;</span>
         <ul className="editable-links">
           {props.userLinks.map((userLink, index) => (
-            <li className="editable-link-item">
-              <span className="editable-link-title">Link Title: {userLink.title}</span>
-              <span className="editable-link-url">Link Url: {userLink.url}</span>
-              <span className="editable-link-clicks">Clicks: {userLink.clicks}</span>
-              <span className="edit-link-btn" onClick={() => {handleEditLink(userLink.id)}}>&#9998;</span>
-              <span className="delete-link-btn" onClick={() => {handleDeleteLink(userLink.id)}}>&#x274C;</span>
-            </li>
+            <EditableLink 
+              linkId={userLink.id}
+              linkTitle={userLink.title}
+              linkUrl={userLink.url}
+              linkClicks={userLink.clicks}
+              userLinks={props.userLinks}
+              setUserLinks={props.setUserLinks}
+              setShowEditLinkModal= {setShowEditLinkModal}
+              setEditLink= {setEditLink}
+            />
           ))}
         </ul>
       {showNewLinkModal &&

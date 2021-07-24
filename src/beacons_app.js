@@ -2,7 +2,7 @@
 /**
  * Beacons main application
  *
- * @copyright 2021 Beacons - All rights reserved
+ * @copyright 2021 Adam Carlson - All rights reserved
  */
 
  import './styles/beacons_app.scss';
