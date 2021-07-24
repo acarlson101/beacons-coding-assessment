@@ -16,6 +16,7 @@ import './styles/links_preview.scss';
        <ul className="live-links">
           {props.userLinks.map((userLink, index) => (
             <PreviewLink
+              key={userLink.id}
               linkTitle={userLink.title}
               linkUrl={userLink.url}
             />

@@ -9,7 +9,7 @@
  import CreateLinkModal from './create_link_modal';
  import {Modal, Button} from 'react-bootstrap';
  import 'bootstrap/dist/css/bootstrap.min.css';
- import React, {useState} from 'react';
+ import React, {useState, useCallback} from 'react';
  import PropTypes from 'prop-types';
 import EditLinkModal from './edit_link_modal';
 import EditableLink from './editable_link';
@@ -24,6 +24,34 @@ import EditableLink from './editable_link';
   const handleCloseSettings = () => setShowSettings(false);
   const handleShowSettings= () => setShowSettings(true);
 
+  const handleDeleteLink = useCallback((linkId) => {
+    props.setUserLinks((prevUserLinks) => {
+      let updatedUserLinks = [...prevUserLinks];
+      const index = updatedUserLinks.findIndex(userLink => userLink.id === linkId);
+      if (index == -1) {
+        return updatedUserLinks;
+      }
+      updatedUserLinks.splice(index, 1);
+      return updatedUserLinks;
+    }); 
+
+    const requestOptions = {
+      method: 'DELETE'
+    };
+    const url = `https://retoolapi.dev/lqtPSO/links/${linkId}`;
+    fetch(url, requestOptions);
+  }, []);
+
+  const handleEditLink = useCallback((linkId) => {
+    const index = props.userLinks.findIndex(userLink => userLink.id === linkId);
+    if (index == -1) {
+      return;
+    }
+
+    props.setEditLink({...props.userLinks[index]});
+    props.setShowEditLinkModal(true);
+  }, []);
+
    return (
      <div className="links-editor-container">
        <h2 className="links-editor-header">Edit Links</h2>
@@ -31,15 +59,14 @@ import EditableLink from './editable_link';
        <span className="settings-btn" onClick={handleShowSettings}>&#9881;</span>
         <ul className="editable-links">
           {props.userLinks.map((userLink, index) => (
-            <EditableLink 
+            <EditableLink
+              key={userLink.id} 
               linkId={userLink.id}
               linkTitle={userLink.title}
               linkUrl={userLink.url}
               linkClicks={userLink.clicks}
-              userLinks={props.userLinks}
-              setUserLinks={props.setUserLinks}
-              setShowEditLinkModal= {setShowEditLinkModal}
-              setEditLink= {setEditLink}
+              handleEditLink={handleEditLink}
+              handleDeleteLink={handleDeleteLink}
             />
           ))}
         </ul>
