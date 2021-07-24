@@ -12,3 +12,4 @@ If I were to iterate on this project, I would add:
 1) Redux for cleaner state management
 2) A color wheel for user-selected colors
 3) Lazing loading links that appear below the fold
+4) Robust unit testing for each component
