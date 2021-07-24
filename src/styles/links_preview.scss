@@ -1,0 +1,31 @@
+@use "./core/spacing";
+
+.links-preview-container {
+  border: 1px solid black;
+  margin: 10px 10px 0;
+
+  .links-preview-header {
+    font-weight: bold;
+    font-size: 1.5rem;;
+  }
+
+  .live-links {
+    list-style-type: none;
+
+    .live-link-item {
+      margin: 10px 0;
+      display: block;
+      width: 80%;
+      position: relative;
+      left: 10%;
+      background: grey;
+      text-align: center;
+      height: 100px;
+
+      .live-link-anchor {
+        display: block;
+        line-height: 100px;
+      }
+    }
+  }
+}

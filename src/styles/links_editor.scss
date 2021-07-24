@@ -1,0 +1,87 @@
+.links-editor-container {
+  border: 1px solid black;
+  margin: 10px 10px 0;
+
+  .links-editor-header {
+    font-weight: bold;
+    font-size: 1.5rem;;
+  }
+
+  .create-link-btn {
+    display: inline-block;
+    background: orange;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+  }
+
+  .settings-btn {
+    display: inline-block;
+    background: violet;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+  }
+
+  .editable-links {
+    list-style-type: none;
+
+    .editable-link-item {
+      margin: 10px 0;
+      display: block;
+      width: 80%;
+      position: relative;
+      left: 10%;
+      background: greenyellow;
+      height: 100px;
+
+      .editable-link-title {
+        display: block;
+      }
+
+      .editable-link-url {
+        display: block;
+      }
+
+      .editable-link-clicks {
+        display: block;
+      }
+
+      .edit-link-btn {
+        position: absolute;
+        bottom: -5px;
+        left: -5px;
+        transform: rotateZ(90deg);
+      }
+
+      .delete-link-btn {
+        position: absolute;
+        bottom: -5px;
+        right: -5px;
+      }
+    }
+  }
+  .add-link-container {
+    margin: 10px 0;
+    display: block;
+    width: 80%;
+    position: relative;
+    left: 10%;
+    background: gold;
+    height: 100px;
+
+    .add-link-title {
+      display: block;
+    }
+    .add-link-url {
+      display: block;
+    }
+    .add-link-btn {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+////
+/// Beacons app component styling
+///
+/// @copyright 2021 Beacons - All rights reserved
+////
+
+@use "./core/colors";
+
+html {
+  height: 100%;
+  width: 100%;
+  body {
+    height: 100%;
+    width: 100%;
+    font-size: 1.3rem;
+  }
+}
