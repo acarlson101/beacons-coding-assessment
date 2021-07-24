@@ -12,7 +12,7 @@ import './styles/links_preview.scss';
 
    return (
      <div className="links-preview-container">
-       <h2 className="links-preview-header">Preview Links</h2>
+       <h2 className="links-preview-header">Links Preview</h2>
        <ul className="live-links">
           {props.userLinks.map((userLink, index) => (
             <PreviewLink

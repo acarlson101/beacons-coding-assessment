@@ -5,6 +5,7 @@
 ////
 
 @use "./core/colors";
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext');
 
 html {
   height: 100%;
@@ -13,7 +14,7 @@ html {
     height: 100%;
     width: 100%;
     font-size: 1.1rem;
-    font-family: Open Sans;
+    font-family: 'Bungee Inline', cursive;
     background-color: white;
   }
 }

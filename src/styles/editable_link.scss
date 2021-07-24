@@ -39,6 +39,10 @@
     transform: rotateZ(90deg);
     font-size: 1.4rem;
     color: cornflowerblue;
+
+    @media screen and (min-width: 450px) {
+      cursor: pointer;
+    }
   }
 
   .delete-link-btn {
@@ -46,5 +50,9 @@
     bottom: 2px;
     right: 5px;
     color: #721c24;
+
+    @media screen and (min-width: 450px) {
+      cursor: pointer;
+    }
   }
 }

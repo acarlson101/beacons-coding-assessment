@@ -27,8 +27,8 @@
 
   const [userLinks, setUserLinks] = useState([]);
   const [isInitialLoadComplete, setIsInitialLoadComplete] = useState(false);
-  const [linkBackgroundColor, setLinkBackgroundColor] = useState('#adff2f');
-  const [linkColor, setLinkColor] = useState('#000000');
+  const [linkBackgroundColor, setLinkBackgroundColor] = useState('#6495ED');
+  const [linkColor, setLinkColor] = useState('#ffffff');
   const [isLinkEdgeRounded, setIsLinkEdgeRounded] = useState(false);
 
   useEffect(() => {
