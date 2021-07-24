@@ -19,6 +19,9 @@ import './styles/links_preview.scss';
               key={userLink.id}
               linkTitle={userLink.title}
               linkUrl={userLink.url}
+              linkBackgroundColor={props.linkBackgroundColor}
+              linkColor={props.linkColor}
+              isLinkEdgeRounded={props.isLinkEdgeRounded}
             />
           ))}
         </ul>
