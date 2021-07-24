@@ -1,0 +1,21 @@
+@use "./core/colors";
+
+.live-link-item {
+  margin: 10px 0;
+  display: block;
+  width: 80%;
+  position: relative;
+  left: 10%;
+  background: colors.$link-background-color;
+  color: colors.$link-color;
+  text-align: center;
+  height: 100px;
+
+  .live-link-anchor {
+    display: block;
+    line-height: 100px;
+  }
+}
+.rounded-link-edge {
+  border-radius: 25px;
+}
