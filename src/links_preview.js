@@ -17,11 +17,14 @@ import './styles/links_preview.scss';
           {props.userLinks.map((userLink, index) => (
             <PreviewLink
               key={userLink.id}
+              linkId={userLink.id}
               linkTitle={userLink.title}
               linkUrl={userLink.url}
+              linkClicks={userLink.clicks}
               linkBackgroundColor={props.linkBackgroundColor}
               linkColor={props.linkColor}
               isLinkEdgeRounded={props.isLinkEdgeRounded}
+              setUserLinks={props.setUserLinks}
             />
           ))}
         </ul>
