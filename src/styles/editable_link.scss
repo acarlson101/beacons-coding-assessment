@@ -1,4 +1,11 @@
+////
+/// Styling for editable link
+///
+/// @copyright 2021 Adam Carlson - All rights reserved
+////
+
 @use "./core/colors";
+@use "./core/breakpoints";
 
 .editable-link-item {
   margin: 20px 0;
@@ -6,10 +13,10 @@
   width: 80%;
   position: relative;
   left: 10%;
-  background: #f8f8f8;
+  background: colors.$light-grey;
   color: black;
   height: 100px;
-  border: 1px solid grey;
+  border: 1px solid colors.$grey;
   border-radius: 5px;
 
   .editable-link-title {
@@ -31,7 +38,7 @@
   .editable-link-clicks {
     display: block;
     margin-left: 10px;
-    font-size: 1.0rem;
+    font-size: 0.9rem;
   }
 
   .edit-link-btn {
@@ -40,9 +47,9 @@
     left: -7px;
     transform: rotateZ(90deg);
     font-size: 1.4rem;
-    color: cornflowerblue;
+    color: colors.$default-theme-color;
 
-    @media screen and (min-width: 450px) {
+    @media screen and (min-width: breakpoints.$desktop-width-breakpoint) {
       cursor: pointer;
     }
   }
@@ -51,9 +58,9 @@
     position: absolute;
     bottom: 2px;
     right: 5px;
-    color: #721c24;
+    color: colors.$dark-red;
 
-    @media screen and (min-width: 450px) {
+    @media screen and (min-width: breakpoints.$desktop-width-breakpoint) {
       cursor: pointer;
     }
   }

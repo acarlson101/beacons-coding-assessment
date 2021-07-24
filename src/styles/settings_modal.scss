@@ -1,3 +1,12 @@
+////
+/// Styling for settings modal
+///
+/// @copyright 2021 Adam Carlson - All rights reserved
+////
+
+@use "./core/colors";
+@use "./core/buttons";
+
 .settings-form-label {
   display: block;
 }
@@ -21,9 +30,9 @@
 }
 
 .save-settings-btn {
-  background: cornflowerblue;
-  color: white;
+  background: colors.$default-theme-color;
+  color: colors.$white;
   border: 0;
-  padding: 10px;
-  border-radius: 5px;
+  padding: buttons.$button-padding;
+  border-radius: buttons.$button-border-radius;
 }

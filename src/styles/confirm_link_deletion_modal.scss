@@ -1,7 +1,16 @@
+////
+/// Styles for the confirm link deletion modal
+///
+/// @copyright 2021 Adam Carlson - All rights reserved
+////
+
+@use "./core/colors";
+@use "./core/buttons";
+
 .confirm-link-deletion-btn {
-  background: #dc3545;
-  color: white;
+  background: colors.$warning-red;
+  color: colors.$white;
   border: 0;
-  padding: 10px;
-  border-radius: 5px;
+  padding: buttons.$button-padding;
+  border-radius: buttons.$button-border-radius;
 }

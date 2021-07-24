@@ -77,7 +77,7 @@ const saveNewLink = (updatedLinkData, linkId) => {
     <span className="edit-link-modal-label">Update Url</span>
      <input className="edit-link-modal-input" type="text" placeholder={props.editLink.url} onChange={handleLinkUrlChange} />
      <button className="edit-link-submit-btn" onClick={() => handleSubmit(props.editLink.id)}>Edit Link</button>
-     <span>{formErrorMsg}</span>
+     <span className="edit-link-error-msg">{formErrorMsg}</span>
     </Modal.Body>
   </Modal>
   );

@@ -5,7 +5,7 @@
  * @copyright 2021 Beacons - All rights reserved
  */
 
- import './styles/beacons_app.scss';
+ import './styles/create_link_modal.scss';
  import React, {useState, useEffect} from 'react';
  import {Modal, Button} from 'react-bootstrap';
  import PropTypes from 'prop-types';
@@ -66,10 +66,10 @@ const saveNewLink = (newLink) => {
       <Modal.Title>Create Link</Modal.Title>
     </Modal.Header>
     <Modal.Body>
-    <input className="add-link-title" type="text" placeholder="Link Title" onChange={handleLinkTitleChange} />
-      <input className="add-link-url" type="text" placeholder="Link Url" onChange={handleLinkUrlChange} />
-      <button className="add-link-btn" onClick={handleSubmit}>Add Link</button>
-      <span>{formErrorMsg}</span>
+    <input className="create-link-modal-input" type="text" placeholder="Link Title" onChange={handleLinkTitleChange} />
+      <input className="create-link-modal-input" type="text" placeholder="Link Url" onChange={handleLinkUrlChange} />
+      <button className="create-link-submit-btn" onClick={handleSubmit}>Add Link</button>
+      <span className="create-link-error-msg">{formErrorMsg}</span>
     </Modal.Body>
   </Modal>
   );

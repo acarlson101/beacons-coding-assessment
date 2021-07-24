@@ -1,11 +1,19 @@
+////
+/// Styling for links preview section
+///
+/// @copyright 2021 Adam Carlson - All rights reserved
+////
+
+@use "./core/colors";
 @use "./core/spacing";
+@use "./core/breakpoints";
 
 .links-preview-container {
-  border: 1px solid grey;
+  border: 1px solid colors.$grey;
   margin: 10px 10px 0;
   border-radius: 10px;
 
-  @media screen and (min-width: 450px) {
+  @media screen and (min-width: breakpoints.$desktop-width-breakpoint) {
     width: 45%;
     float: right;
   }

@@ -1,10 +1,11 @@
 ////
 /// Beacons app component styling
 ///
-/// @copyright 2021 Beacons - All rights reserved
+/// @copyright 2021 Adam Carlson - All rights reserved
 ////
 
 @use "./core/colors";
+@use "./core/fonts";
 
 html {
   height: 100%;
@@ -12,8 +13,8 @@ html {
   body {
     height: 100%;
     width: 100%;
-    font-size: 1.1rem;
-    font-family: 'B612';
-    background-color: white;
+    font-size: fonts.$base-font-size;
+    font-family: fonts.$font-family-name;
+    background-color: colors.$white;
   }
 }
