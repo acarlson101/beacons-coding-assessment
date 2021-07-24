@@ -1,0 +1,62 @@
+////
+/// Styling for links editor component
+///
+/// @copyright 2021 Adam Carlson - All rights reserved
+////
+
+@use "./core/colors";
+@use "./core/breakpoints";
+
+.links-editor-container {
+  border: 1px solid colors.$grey;
+  margin: 10px 10px 0;
+  border-radius: 10px;
+
+  @media screen and (min-width: breakpoints.$desktop-width-breakpoint) {
+    width: 45%;
+    float: left;
+  }
+
+  .links-editor-header {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 5px;
+  }
+
+  .settings-btn {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 2.7rem;
+    color: colors.$grey;
+
+    @media screen and (min-width: breakpoints.$desktop-width-breakpoint) {
+      right: 55%;
+      cursor: pointer;
+    }
+  }
+
+  .editable-links {
+    list-style-type: none;
+  }
+
+  .create-link-btn-container {
+    width: 100%;
+    text-align: center;
+
+    .create-link-btn {
+      display: inline-block;
+      background: colors.$default-theme-color;
+      text-align: center;
+      color: colors.$white;
+      padding: 10px;
+      border-radius: 3px;
+      margin-bottom: 20px;
+    }
+  }
+}

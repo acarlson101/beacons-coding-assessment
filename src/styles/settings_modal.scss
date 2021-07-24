@@ -1,0 +1,38 @@
+////
+/// Styling for settings modal
+///
+/// @copyright 2021 Adam Carlson - All rights reserved
+////
+
+@use "./core/colors";
+@use "./core/buttons";
+
+.settings-form-label {
+  display: block;
+}
+
+.change-link-background, 
+.change-link-color,
+.link-corner-styling-selection {
+  margin-bottom: 15px;
+}
+
+.link-corner-styling-selection {
+  display: block;
+}
+
+.link-style-radio-btn {
+  margin-right: 5px;
+}
+
+.link-style-radio-btn-label {
+  margin-bottom: 5px;
+}
+
+.save-settings-btn {
+  background: colors.$default-theme-color;
+  color: colors.$white;
+  border: 0;
+  padding: buttons.$button-padding;
+  border-radius: buttons.$button-border-radius;
+}

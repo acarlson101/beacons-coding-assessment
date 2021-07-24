@@ -1,0 +1,67 @@
+////
+/// Styling for editable link
+///
+/// @copyright 2021 Adam Carlson - All rights reserved
+////
+
+@use "./core/colors";
+@use "./core/breakpoints";
+
+.editable-link-item {
+  margin: 20px 0;
+  display: block;
+  width: 80%;
+  position: relative;
+  left: 10%;
+  background: colors.$light-grey;
+  color: black;
+  height: 100px;
+  border: 1px solid colors.$grey;
+  border-radius: 5px;
+
+  .editable-link-title {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    margin-top: 3px;
+    margin-left: 3px;
+  }
+
+  .editable-link-url {
+    display: block;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    font-style: italic;
+    font-size: 1.0rem;
+  }
+
+  .editable-link-clicks {
+    display: block;
+    margin-left: 10px;
+    font-size: 0.9rem;
+  }
+
+  .edit-link-btn {
+    position: absolute;
+    bottom: -7px;
+    left: -7px;
+    transform: rotateZ(90deg);
+    font-size: 1.4rem;
+    color: colors.$default-theme-color;
+
+    @media screen and (min-width: breakpoints.$desktop-width-breakpoint) {
+      cursor: pointer;
+    }
+  }
+
+  .delete-link-btn {
+    position: absolute;
+    bottom: 2px;
+    right: 5px;
+    color: colors.$dark-red;
+
+    @media screen and (min-width: breakpoints.$desktop-width-breakpoint) {
+      cursor: pointer;
+    }
+  }
+}

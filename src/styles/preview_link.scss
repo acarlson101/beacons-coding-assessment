@@ -1,0 +1,26 @@
+////
+/// Styling for preview link component
+///
+/// @copyright 2021 Adam Carlson - All rights reserved
+////
+
+.live-link-item {
+  margin: 20px 0;
+  display: block;
+  width: 80%;
+  position: relative;
+  left: 10%;
+  font-weight: bold;
+  text-align: center;
+  height: 100px;
+
+  .live-link-anchor {
+    display: block;
+    line-height: 100px;
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+}
+.rounded-link-edge {
+  border-radius: 25px;
+}
