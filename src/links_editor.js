@@ -19,6 +19,8 @@ import SettingsModal from './settings_modal';
   const [showNewLinkModal, setShowNewLinkModal] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showEditLinkModal, setShowEditLinkModal] = useState(false);
+  const [showConfirmDeleteModal, setShowConfirmDeleteModal] = useState(false);
+  const [deleteLinkId, setDeleteLinkId] = useState(-1);
   const [editLink, setEditLink] = useState(null);
 
 
@@ -26,22 +28,28 @@ import SettingsModal from './settings_modal';
   const handleShowSettings= () => setShowSettings(true);
 
   const handleDeleteLink = useCallback((linkId) => {
+    setShowConfirmDeleteModal(true);
+    setDeleteLinkId(linkId);
+  }, []);
+
+  const deleteLink = () => {
     props.setUserLinks((prevUserLinks) => {
       let updatedUserLinks = [...prevUserLinks];
-      const index = updatedUserLinks.findIndex(userLink => userLink.id === linkId);
+      const index = updatedUserLinks.findIndex(userLink => userLink.id === deleteLinkId);
       if (index == -1) {
         return updatedUserLinks;
       }
       updatedUserLinks.splice(index, 1);
       return updatedUserLinks;
     }); 
+    setShowConfirmDeleteModal(false);
 
     const requestOptions = {
       method: 'DELETE'
     };
-    const url = `https://retoolapi.dev/lqtPSO/links/${linkId}`;
+    const url = `https://retoolapi.dev/lqtPSO/links/${deleteLinkId}`;
     fetch(url, requestOptions);
-  }, []);
+  }
 
   const handleEditLink = useCallback((linkId) => {
     const index = props.userLinks.findIndex(userLink => userLink.id === linkId);
@@ -96,6 +104,18 @@ import SettingsModal from './settings_modal';
           editLink={editLink}
           setUserLinks={props.setUserLinks}
         />
+      }
+
+      {showConfirmDeleteModal &&
+        <Modal show={showConfirmDeleteModal} onHide={() => setShowConfirmDeleteModal(false)} animation={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>Are you sure you want to delete this link?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <button onClick={() => setShowConfirmDeleteModal(false)}>Cancel</button>
+          <button onClick={() => deleteLink()}>Delete</button>
+        </Modal.Body>
+        </Modal>
       }      
       
      </div>
