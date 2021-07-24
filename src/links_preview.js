@@ -7,29 +7,15 @@
 
  import './styles/links_preview.scss';
 
- function LinksPreview() {
-  const linksData = [
-    {
-      id: 1,
-      url: '#',
-      title: 'Link 1',
-      clicks: 4
-    },
-    {
-      id: 2,
-      url: '#',
-      title: 'Link 2',
-      clicks: 32
-    }
-  ];
+ function LinksPreview(props) {
 
    return (
      <div className="links-preview-container">
        <h2 className="links-preview-header">Preview Links</h2>
        <ul className="live-links">
-          {linksData.map((linkData, index) => (
+          {props.userLinks.map((userLink, index) => (
             <li className="live-link-item">
-              <a className="live-link-anchor" href={linkData.url}>{linkData.title}</a>
+              <a className="live-link-anchor" href={userLink.url}>{userLink.title}</a>
             </li>
           ))}
         </ul>

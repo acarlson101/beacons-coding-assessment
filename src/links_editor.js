@@ -6,32 +6,18 @@
  */
 
  import './styles/links_editor.scss';
+ import CreateLinkModal from './create_link_modal';
  import {Modal, Button} from 'react-bootstrap';
  import 'bootstrap/dist/css/bootstrap.min.css';
  import React, {useState} from 'react';
+ import PropTypes from 'prop-types';
 
- function LinksEditor() {
-  const linksData = [
-    {
-      id: 1,
-      url: '#',
-      title: 'Link 1',
-      clicks: 4
-    },
-    {
-      id: 2,
-      url: '#',
-      title: 'Link 2',
-      clicks: 32
-    }
-  ];
-
-  const [showNewPost, setShowNewPost] = useState(false);
+ function LinksEditor(props) {
+  const [showNewLinkModal, setShowNewLinkModal] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showEditPost, setShowEditPost] = useState(false);
 
-  const handleCloseNewPost = () => setShowNewPost(false);
-  const handleShowNewPost= () => setShowNewPost(true);
+
 
 
   const handleCloseSettings = () => setShowSettings(false);
@@ -40,32 +26,31 @@
   const handleCloseEditPost = () => setShowEditPost(false);
   const handleShowEditPost= () => setShowEditPost(true);
 
+  const createLink = () => {};
+
    return (
      <div className="links-editor-container">
        <h2 className="links-editor-header">Edit Links</h2>
-       <span className="create-link-btn" onClick={handleShowNewPost}>+</span>
+       <span className="create-link-btn" onClick={() => setShowNewLinkModal(true)}>+</span>
        <span className="settings-btn" onClick={handleShowSettings}>&#9881;</span>
         <ul className="editable-links">
-          {linksData.map((linkData, index) => (
+          {props.userLinks.map((userLink, index) => (
             <li className="editable-link-item">
-              <span className="editable-link-title">Link Title: {linkData.title}</span>
-              <span className="editable-link-url">Link Url: {linkData.url}</span>
-              <span className="editable-link-clicks">Clicks: {linkData.clicks}</span>
+              <span className="editable-link-title">Link Title: {userLink.title}</span>
+              <span className="editable-link-url">Link Url: {userLink.url}</span>
+              <span className="editable-link-clicks">Clicks: {userLink.clicks}</span>
               <span className="edit-link-btn" onClick={handleShowEditPost}>&#9998;</span>
               <span className="delete-link-btn">&#x274C;</span>
             </li>
           ))}
         </ul>
-      <Modal show={showNewPost} onHide={handleCloseNewPost} animation={false}>
-        <Modal.Header closeButton>
-          <Modal.Title>Create Link</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <input className="add-link-title" type="text" placeholder="Link Title" />
-         <input className="add-link-url" type="text" placeholder="Link Url" />
-         <button className="add-link-btn">Add Link</button>
-        </Modal.Body>
-      </Modal>
+      {showNewLinkModal &&
+        <CreateLinkModal 
+          showNewLinkModal={showNewLinkModal}
+          setShowNewLinkModal={setShowNewLinkModal}
+          setUserLinks={props.setUserLinks}
+        />
+      }
 
       <Modal show={showSettings} onHide={handleCloseSettings} animation={false}>
         <Modal.Header closeButton>
@@ -91,12 +76,17 @@
         <Modal.Body>
         <input className="edit-link-title" type="text" value="Link Title" />
          <input className="edit-link-url" type="text" value="http://example" />
-         <button className="edit-link-btn">Edit Link</button>
+         <button className="edit-link-btn" onClick={createLink}>Edit Link</button>
         </Modal.Body>
       </Modal>
       
      </div>
    );
  }
+
+LinksEditor.propTypes = {
+  userLinks: PropTypes.array.isRequired,
+  setUserLinks: PropTypes.func.isRequired
+};
  
  export default LinksEditor;
